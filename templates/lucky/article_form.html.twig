@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-8">
+                {{ form_start(articleForm, {'attr': {'novalidate': 'novalidate'}}) }}
+                    {{ form_errors(articleForm) }}
+                    {{ form_row(articleForm.image, {label: "My Image"}) }}
+{#                        {{ form_row(articleForm.title) }}#}
+                    {{ form_row(articleForm.content) }}
+{#                    {{ form_widget(articleForm) }}#}
+                {{ form_end(articleForm) }}
+{#                {{ form(articleForm) }}#}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+

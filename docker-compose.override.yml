@@ -1,0 +1,15 @@
+version: "3"
+services:
+  php:
+    environment:
+      - XDEBUG_CONFIG=remote_host=172.17.0.1 #HOST IP address
+      - PHP_IDE_CONFIG=serverName=Docker #Server name in phpstorm xdebug servers config
+  nginx:
+    ports:
+      - "80:80"
+  db:
+    ports:
+      - 42333:3306
+  phpmyadmin:
+    ports:
+      - "8010:80"

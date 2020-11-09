@@ -1,0 +1,37 @@
+version: "3"
+services:
+  nginx:
+    build: ./docker/nginx
+    restart: unless-stopped
+    volumes:
+      - ./:/var/www/
+    depends_on:
+      - php
+  php:
+    build: ./docker/php
+    restart: unless-stopped
+    volumes:
+      - ./:/var/www/
+    depends_on:
+      - db
+    links:
+      - db:mysql
+    environment:
+      - XDEBUG_CONFIG=remote_host=172.17.0.1
+      - PHP_IDE_CONFIG=serverName=Docker
+  db:
+    image: mysql:5.7.27
+    restart: unless-stopped
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --init-connect='SET NAMES utf8mb4;'
+    volumes:
+      - ./docker/data/mysql:/var/lib/mysql
+    env_file:
+      - db.env
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:4.9
+    restart: unless-stopped
+    environment:
+      - PMA_HOST=db
+      - UPLOAD_LIMIT=1G
+    depends_on:
+      - db
