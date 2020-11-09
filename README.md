@@ -1,1 +1,1 @@
-# php_ukraine_2004_symfony
+# php_blog_symfony
