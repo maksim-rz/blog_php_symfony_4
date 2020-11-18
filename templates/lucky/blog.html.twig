@@ -32,7 +32,8 @@
                 {% for article in articles %}
                     <div class="col-md-4 d-flex ftco-animate">
                         <div class="blog-entry justify-content-end">
-                            <a href="{{ url('single_blog', {id: article.id}) }}" class="block-20" style="background-image: url({{ asset('images/image_1.jpg') }});">
+{#                            <a href="{{ url('single_blog', {id: article.id}) }}" class="block-20" style="background-image: url({{ asset('uloads/articles/') }});">#}
+                            <a href="{{ url('single_blog', {id: article.id}) }}" class="block-20" style="background-image: url(/uploads/articles/{{ article.image }});">
                             </a>
                             <div class="text p-4 float-right d-block">
                                 <div class="topper d-flex align-items-center">
