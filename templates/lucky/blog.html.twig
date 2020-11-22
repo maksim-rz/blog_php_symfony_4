@@ -33,7 +33,8 @@
                     <div class="col-md-4 d-flex ftco-animate">
                         <div class="blog-entry justify-content-end">
 {#                            <a href="{{ url('single_blog', {id: article.id}) }}" class="block-20" style="background-image: url({{ asset('uloads/articles/') }});">#}
-                            <a href="{{ url('single_blog', {id: article.id}) }}" class="block-20" style="background-image: url(/uploads/articles/{{ article.image }});">
+{#                            <a href="{{ url('single_blog', {id: article.id}) }}" class="block-20" style="background-image: url(/uploads/articles/{{ article.image }});">#}
+                            <a href="{{ url('single_blog', {id: article.id}) }}" class="block-20" style="background-image: url({{ asset(uploaded_article_asset(article)) }});">
                             </a>
                             <div class="text p-4 float-right d-block">
                                 <div class="topper d-flex align-items-center">

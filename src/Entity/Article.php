@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ArticleRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -30,11 +31,6 @@ class Article
     private $content;
 
     /**
-     * @var int
-     */
-    private $field;
-
-    /**
      * @ORM\Column(type="string", length=255)
      */
     private $image;
@@ -53,6 +49,37 @@ class Article
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
+
+    /**
+     * @var UploadedFile
+     */
+    private $imageFile;
+
+    /**
+     * @return UploadedFile
+     * @Assert\Image(maxSize="3M",
+     *         mimeTypes={
+     *         "image/png",
+     *         "image/jpeg"
+     *     },
+     *     mimeTypesMessage="Allowed formats are png and jpeg"
+     * )
+     */
+    public function getImageFile(): ?UploadedFile
+    {
+        return $this->imageFile;
+    }
+
+    /**
+     * @param UploadedFile|null $imageFile
+     * @return $this
+     */
+    public function setImageFile(?UploadedFile $imageFile): self
+    {
+        $this->imageFile = $imageFile;
+
+        return $this;
+    }
 
     /**
      * @return int|null
@@ -134,21 +161,6 @@ class Article
     public function setCategories(?Category $categories): self
     {
         $this->categories = $categories;
-
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getField(): ?int
-    {
-        return $this->field;
-    }
-
-    public function setField($field): self
-    {
-        $this->field = $field;
 
         return $this;
     }
