@@ -36,6 +36,7 @@ final class UserFactory extends ModelFactory
         return [
             'email' => self::faker()->email,
             'firstName' => self::faker()->firstName,
+            'roles' => ['ROLE_ADMIN'],
         ];
     }
 

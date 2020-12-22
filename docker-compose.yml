@@ -17,7 +17,7 @@ services:
     links:
       - db:mysql
     environment:
-      - XDEBUG_CONFIG=remote_host=172.17.0.1
+#      - XDEBUG_CONFIG=remote_host=172.17.0.1
       - PHP_IDE_CONFIG=serverName=Docker
   db:
     image: mysql:5.7.27

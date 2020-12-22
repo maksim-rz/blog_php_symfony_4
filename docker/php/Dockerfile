@@ -1,4 +1,4 @@
-FROM php:7.4.4-fpm
+FROM php:7.4.13-fpm
 
 RUN apt-get update
 RUN apt-get install -y wget gnupg
@@ -26,7 +26,7 @@ RUN pecl install igbinary && echo "extension=igbinary.so" > /usr/local/etc/php/c
 RUN curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer
 
 RUN apt-get install -y python-pydot python-pydot-ng graphviz
-RUN pecl install xdebug-2.9.3 && docker-php-ext-enable xdebug
+RUN pecl install xdebug-3.0.1 && docker-php-ext-enable xdebug
 
 COPY phpconf.ini /usr/local/etc/php/conf.d/phpconf.ini
 
